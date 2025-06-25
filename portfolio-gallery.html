@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samuel Perez 3D Design Portfolio Gallery</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+    :root {
+      --accent: #f7b32b;
+    }
+    body {
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      margin-top: 48px;
+      font-size: 2.3rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: #111;
+    }
+    h2 {
+      margin: 56px 0 24px 0;
+      text-align: center;
+      font-size: 1.25rem;
+      color: #888;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+      position: relative;
+      padding-bottom: 12px;
+    }
+    h2::after {
+      content: "";
+      display: block;
+      margin: 12px auto 0 auto;
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      border-radius: 1px;
+      opacity: 0.18;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 40px;
+      max-width: 1100px;
+      margin: 0 auto 60px auto;
+      padding: 0 24px;
+    }
+    .item {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.18s, transform 0.18s, border-color 0.18s;
+      cursor: pointer;
+      min-height: 240px;
+      border: 1px solid #eee;
+    }
+    .item:hover {
+      box-shadow: 0 8px 32px 0 var(--accent)22;
+      transform: translateY(-2px) scale(1.018);
+      border-color: var(--accent);
+    }
+    .item img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      background: #f5f5f5;
+      display: block;
+      border-bottom: 1px solid #f0f0f0;
+      transition: opacity 0.2s;
+    }
+    .caption {
+      padding: 18px 10px 16px 10px;
+      text-align: center;
+      font-size: 1.08rem;
+      font-weight: 500;
+      color: #222;
+      background: #fff;
+      width: 100%;
+      letter-spacing: 0.2px;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      background: rgba(0,0,0,0.13);
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.2s;
+    }
+    .modal.active {
+      display: flex;
+    }
+    .modal-content {
+      position: relative;
+      background: #fff;
+      border-radius: 18px;
+      max-width: 92vw;
+      max-height: 92vh;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.13);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: popIn 0.2s;
+      border: none;
+    }
+    .modal-content img {
+      max-width: 80vw;
+      max-height: 70vh;
+      border-radius: 12px;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border: none;
+      margin-top: 24px;
+    }
+    .modal-caption {
+      color: #222;
+      margin: 24px 0 18px 0;
+      font-size: 1.1rem;
+      text-align: center;
+      font-weight: 500;
+      font-family: 'Montserrat', Arial, sans-serif;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 18px;
+      color: #888;
+      font-size: 2.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      background: none;
+      border: none;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s, color 0.2s;
+      z-index: 10;
+    }
+    .close:hover {
+      background: var(--accent)22;
+      color: var(--accent);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes popIn {
+      from { transform: scale(0.97); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    @media (max-width: 600px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .item img {
+        height: 120px;
+      }
+      .modal-content img {
+        max-width: 95vw;
+        max-height: 60vh;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Samuel Perez 3D Design Portfolio Gallery</h1>
+
+  <h2>Personal Projects</h2>
+  <div class="gallery">
+    <div class="item" data-img="Personal/Conveyor Belt.png" data-caption="Conveyor Belt">
+      <img src="Personal/Conveyor Belt.png" alt="Conveyor Belt">
+      <div class="caption">Conveyor Belt</div>
+    </div>
+    <div class="item" data-img="Personal/Conveyor Prototype.png" data-caption="Conveyor Prototype">
+      <img src="Personal/Conveyor Prototype.png" alt="Conveyor Prototype">
+      <div class="caption">Conveyor Prototype</div>
+    </div>
+    <div class="item" data-img="Personal/Planetary Transmission.png" data-caption="Planetary Transmission">
+      <img src="Personal/Planetary Transmission.png" alt="Planetary Transmission">
+      <div class="caption">Planetary Transmission</div>
+    </div>
+    <div class="item" data-img="Personal/Product Design.png" data-caption="Product Design">
+      <img src="Personal/Product Design.png" alt="Product Design">
+      <div class="caption">Product Design</div>
+    </div>
+    <div class="item" data-img="Personal/Screenshot 2025-06-20 144520.png" data-caption="Personal Screenshot">
+      <img src="Personal/Screenshot 2025-06-20 144520.png" alt="Personal Screenshot">
+      <div class="caption">Personal Screenshot</div>
+    </div>
+  </div>
+
+  <h2>Work Projects</h2>
+  <div class="gallery">
+    <div class="item" data-img="Work/ARIS CNC .png" data-caption="ARIS CNC">
+      <img src="Work/ARIS CNC .png" alt="ARIS CNC">
+      <div class="caption">ARIS CNC</div>
+    </div>
+    <div class="item" data-img="Work/ARIS Render 1.png" data-caption="ARIS Render 1">
+      <img src="Work/ARIS Render 1.png" alt="ARIS Render 1">
+      <div class="caption">ARIS Render 1</div>
+    </div>
+    <div class="item" data-img="Work/Aris Render 2.png" data-caption="Aris Render 2">
+      <img src="Work/Aris Render 2.png" alt="Aris Render 2">
+      <div class="caption">Aris Render 2</div>
+    </div>
+    <div class="item" data-img="Work/Chip holder.png" data-caption="Chip Holder">
+      <img src="Work/Chip holder.png" alt="Chip Holder">
+      <div class="caption">Chip Holder</div>
+    </div>
+    <div class="item" data-img="Work/Drawing 1.png" data-caption="Drawing 1">
+      <img src="Work/Drawing 1.png" alt="Drawing 1">
+      <div class="caption">Drawing 1</div>
+    </div>
+    <div class="item" data-img="Work/drawing 2.png" data-caption="Drawing 2">
+      <img src="Work/drawing 2.png" alt="Drawing 2">
+      <div class="caption">Drawing 2</div>
+    </div>
+    <div class="item" data-img="Work/Label Printer Modification 2.png" data-caption="Label Printer Modification 2">
+      <img src="Work/Label Printer Modification 2.png" alt="Label Printer Modification 2">
+      <div class="caption">Label Printer Modification 2</div>
+    </div>
+    <div class="item" data-img="Work/Label Printer Modification.png" data-caption="Label Printer Modification">
+      <img src="Work/Label Printer Modification.png" alt="Label Printer Modification">
+      <div class="caption">Label Printer Modification</div>
+    </div>
+    <div class="item" data-img="Work/Light Box.png" data-caption="Light Box">
+      <img src="Work/Light Box.png" alt="Light Box">
+      <div class="caption">Light Box</div>
+    </div>
+    <div class="item" data-img="Work/MPS (Modular Profile System).png" data-caption="Modular Profile System (MPS)">
+      <img src="Work/MPS (Modular Profile System).png" alt="Modular Profile System (MPS)">
+      <div class="caption">Modular Profile System (MPS)</div>
+    </div>
+    <div class="item" data-img="Work/Screenshot 2025-06-20 144135.png" data-caption="Work Screenshot 1">
+      <img src="Work/Screenshot 2025-06-20 144135.png" alt="Work Screenshot 1">
+      <div class="caption">Work Screenshot 1</div>
+    </div>
+    <div class="item" data-img="Work/Screenshot 2025-06-20 144616.png" data-caption="Work Screenshot 2">
+      <img src="Work/Screenshot 2025-06-20 144616.png" alt="Work Screenshot 2">
+      <div class="caption">Work Screenshot 2</div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <button class="close" id="closeModal" title="Close">&times;</button>
+      <img id="modalImg" src="" alt="">
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+
+  <script>
+    // Modal logic
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('.item').forEach(item => {
+      item.addEventListener('click', function() {
+        const imgSrc = this.getAttribute('data-img');
+        const caption = this.getAttribute('data-caption');
+        modalImg.src = imgSrc;
+        modalCaption.textContent = caption;
+        modal.classList.add('active');
+      });
+    });
+
+    closeModal.onclick = function() {
+      modal.classList.remove('active');
+      modalImg.src = '';
+    };
+
+    // Close modal when clicking outside the image
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        modalImg.src = '';
+      }
+    });
+
+    // Optional: close modal on ESC key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        modal.classList.remove('active');
+        modalImg.src = '';
+      }
+    });
+  </script>
+</body>
+</html> 
